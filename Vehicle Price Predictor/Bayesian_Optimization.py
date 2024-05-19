@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split, cross_val_score
 pd.set_option('display.width', 300)
 pd.set_option('display.max_columns', 12)
 
-cars = pd.read_csv("/Users/ishanranasinghe/Desktop/Filtered_Car_Dataset.csv")
+cars = pd.read_csv("./Data_set/Filtered_Car_Dataset.csv")
 
 make_col_enc = pickle.load(open('Data_Encoding/make_col_enc.pkl', 'rb'))
 cars['make'] = make_col_enc.transform(cars['make'])

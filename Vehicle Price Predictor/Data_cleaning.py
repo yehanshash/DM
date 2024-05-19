@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 pd.set_option('display.width',300)
 pd.set_option('display.max_columns',12)
 
-cars_data = pd.read_csv('/Users/ishanranasinghe/Desktop/Filtered_Car_Dataset.csv')
+cars_data = pd.read_csv('./Data_set/Filtered_Car_Dataset.csv')
 print(cars_data.head(10))
 
 cars_data["price"] = cars_data["price"].str.replace("Rs.", "")

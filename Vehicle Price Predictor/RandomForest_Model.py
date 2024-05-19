@@ -8,7 +8,7 @@ from sklearn.metrics import mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
 
 
-cars = pd.read_csv("/Users/ishanranasinghe/Desktop/Filtered_Car_Dataset.csv")
+cars = pd.read_csv("./Data_set/Filtered_Car_Dataset.csv")
 
 
 make_col_enc = pickle.load(open('Data_Encoding/make_col_enc.pkl','rb'))
