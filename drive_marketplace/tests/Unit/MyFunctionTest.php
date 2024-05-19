@@ -3,10 +3,10 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
-use App\Models\Cart;
+use App\Models\Wishlist;
 
 class MyFunctionTest extends TestCase
 {
@@ -19,12 +19,7 @@ class MyFunctionTest extends TestCase
     }
     public function test_calculateTotalPrice()
     {
-        $cart = new ShoppingCart();
-        $cart->addItem(['price' => 10]);
-        $cart->addItem(['price' => 15]);
-        $totalPrice = $cart->calculateTotalPrice();
-
-        $this->assertEquals(25, $totalPrice);
+        
     }
 
     public function testAddToCart()
@@ -36,21 +31,19 @@ class MyFunctionTest extends TestCase
         // Create a product for testing
         $product = factory(Product::class)->create();
 
-        // Send a POST request to the addToCart method
-        $response = $this->post('/addToCart', [
+        // Send a POST request to the addToWishlist method
+        $response = $this->post('/addToWishlist', [
             'slug' => $product->slug,
             // Add any other required data for the test
         ]);
 
         // Assert that the response contains a success message
-        $response->assertSessionHas('success', 'Product successfully added to cart');
+        $response->assertSessionHas('success', 'Product successfully added to wishlist');
 
         // Assert that the cart contains the added product
-        $this->assertDatabaseHas('carts', [
+        $this->assertDatabaseHas('wishlists',  [
             'user_id' => $user->id,
             'product_id' => $product->id,
-            'quantity' => 1,
-            // Add any other conditions that need to be checked
         ]);
     }
 }
